@@ -1,10 +1,9 @@
-import React from 'react'
-import styles from './App.module.css'
+import React from 'react';
 
-import { Provider } from 'react-redux'
-import { PersistGate } from 'redux-persist/integration/react'
-import RootComponent from './RootComponent'
-import { persistor, store } from './store/reducers/store'
+import { Header } from './components/Header/Header'
+import { TodoPanel } from './components/TodoPanel/TodoPanel'
+
+import styles from './App.module.css';
 
 const DEFAULT_TODO_LIST = [
     { id: 1, name: 'task 1', description: 'description 1', checked: false },
@@ -13,19 +12,25 @@ const DEFAULT_TODO_LIST = [
         id: 3,
         name: 'task 3',
         description:
-        'Long long long long read long long long read long long long read long long long read long long long read long long long read long long long read long long long read ',
+            'so long task description 3 so long task description so long task description so long task description so long task description',
         checked: true
     }
 ];
 
 export const App = () => {
-    console.log('@todos', DEFAULT_TODO_LIST);
+    const [todoIdForEdit, setTodoIdForEdit] = React.useState<number | null>(null);
+    const [todos, setTodos] = React.useState(DEFAULT_TODO_LIST);
 
-    return (
-        <div className={styles.app_container}>
-            <div className={styles.container}>todo</div>
-        </div>
-    );
+    const selectTodoIdForEdit = (id: Todo['id']) => {
+        setTodoIdForEdit(id);
+    };
+
+    const deleteTodo = (id: Todo['id']) => {
+        setTodos(todos.filter((todo) => todo.id !== id));
+    };
+
+    const addTodo = ({ name, description }: Omit<Todo, 'id' | 'checked'>) => {
+        setTodos([...todos, { id: todos[todos.length - 1].id + 1, description, name, checked: false }]);
+    };
+
 }
-
-export default App
