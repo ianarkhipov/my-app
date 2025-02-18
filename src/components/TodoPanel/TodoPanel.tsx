@@ -73,3 +73,10 @@ export const TodoPanel: React.FC<TodoPanelProps> = (props) => {
         </div>
     );
 };
+
+export interface Todo {
+    id: number;
+    name: string;
+    description: string;
+    checked: boolean;
+}
