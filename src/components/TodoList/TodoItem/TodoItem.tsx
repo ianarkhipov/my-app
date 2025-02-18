@@ -34,10 +34,10 @@ export const TodoItem: React.FC<TodoItemProps> = ({
             </div>
         </div>
         <div className={styles.todo_item_button_container}>
-            <Button color='orange' onClick={() => selectTodoIdForEdit(todo.id)}>
+            <Button variant={'edit'} onClick={() => selectTodoIdForEdit(todo.id)}>
                 EDIT
             </Button>
-            <Button color='red' onClick={() => deleteTodo(todo.id)}>
+            <Button variant={'delete'} onClick={() => deleteTodo(todo.id)}>
                 DELETE
             </Button>
         </div>

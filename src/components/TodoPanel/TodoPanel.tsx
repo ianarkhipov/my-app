@@ -60,12 +60,12 @@ export const TodoPanel: React.FC<TodoPanelProps> = (props) => {
             </div>
             <div className={styles.button_container}>
                 {!isEdit && (
-                    <Button color='blue' onClick={onClick}>
+                    <Button variant={'add'} onClick={onClick}>
                         ADD
                     </Button>
                 )}
                 {isEdit && (
-                    <Button color='orange' onClick={onClick}>
+                    <Button variant={'edit'} onClick={onClick}>
                         EDIT
                     </Button>
                 )}
